@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Cadastro</title>
+    <link rel="stylesheet" href="css/loja.css">
+</head>
+<body>
+    <h1>Área do Cliente</h1>
+
+    <section>
+        <h2>Cadastro</h2>
+        <form id="formCadastro">
+            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+            <input type="text" id="cpf" placeholder="CPF" required>
+            <input type="text" id="telefone" placeholder="Telefone" required>
+            <input type="text" id="endereco" placeholder="Endereço" required>
+            <select id="pagamento" required>
+                <option value="">Forma de pagamento</option>
+                <option>Pix</option>
+                <option>Débito</option>
+                <option>Crédito</option>
+                <option>Boleto</option>
+            </select>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Login</h2>
+        <form id="formLogin">
+            <input type="email" id="loginEmail" placeholder="E-mail" required>
+            <input type="password" id="loginSenha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>
