@@ -1,6 +1,9 @@
 import Cliente from './Cliente.js';
 import { carregarClientes, salvarClientes, setLoginAtual } from './storage.js';
 
+const LOGIN_USER = "admin@email.com";
+const LOGIN_PASS = "1234";
+
 document.getElementById('formCadastro').addEventListener('submit', e => {
     e.preventDefault();
     const cliente = new Cliente(
@@ -24,15 +27,22 @@ let clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
     .map(Cliente.fromJSON);
 
 document.getElementById("btnLoginCliente").addEventListener("click", () => {
-    const email = document.getElementById("clienteEmail").value;
-    const senha = document.getElementById("clienteSenha").value;
+    const email = document.getElementById("loginEmail").value;
+    const senha = document.getElementById("loginSenha").value;
 
-    const cliente = clientes.find(c => c.email === email && c.senha === senha);
-
-    if (cliente) {
-        sessionStorage.setItem("clienteLogado", JSON.stringify(cliente));
-        window.location.href = "loja.html"; 
+    if (email === LOGIN_USER && senha === LOGIN_PASS) {
+        // sessionStorage.setItem("adminLogado", "true");
+        location.href = "index.html"
     } else {
-        alert("E-mail ou senha inválidos!");
+        alert("Usuário ou senha inválidos!");
     }
+
+    // const cliente = clientes.find(c => c.email === email && c.senha === senha);
+
+    // if (cliente) {
+    //     sessionStorage.setItem("clienteLogado", JSON.stringify(cliente));
+    //     window.location.href = "loja.html"; 
+    // } else {
+    //     alert("E-mail ou senha inválidos!");
+    // }
 });
