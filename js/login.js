@@ -20,19 +20,19 @@ document.getElementById('formCadastro').addEventListener('submit', e => {
     alert('Cadastro realizado com sucesso!');
 });
 
-document.getElementById('formLogin').addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const senha = document.getElementById('loginSenha').value;
+let clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
+    .map(Cliente.fromJSON);
 
-    let clientes = carregarClientes();
-    const usuario = clientes.find(c => c.email === email);
+document.getElementById("btnLoginCliente").addEventListener("click", () => {
+    const email = document.getElementById("clienteEmail").value;
+    const senha = document.getElementById("clienteSenha").value;
 
-    if (usuario && usuario.validarSenha(senha)) {
-        setLoginAtual(email);
-        alert(`Bem-vindo, ${usuario.nome}`);
-        window.location.href = 'index.html';
+    const cliente = clientes.find(c => c.email === email && c.senha === senha);
+
+    if (cliente) {
+        sessionStorage.setItem("clienteLogado", JSON.stringify(cliente));
+        window.location.href = "loja.html"; 
     } else {
-        alert('Email ou senha inválidos!');
+        alert("E-mail ou senha inválidos!");
     }
 });
