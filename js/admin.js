@@ -19,6 +19,7 @@ if (sessionStorage.getItem("adminLogado") === "true") {
 function mostrarLogin() {
     secLogin.style.display = "block";
     secPainel.style.display = "none";
+    btnLogout.style.display = "none";
 }
 
 // Função para mostrar painel

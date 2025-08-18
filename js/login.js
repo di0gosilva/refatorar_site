@@ -1,48 +1,74 @@
-import Cliente from './Cliente.js';
-import { carregarClientes, salvarClientes, setLoginAtual } from './storage.js';
+//tabs para cadastro e login
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
 
-const LOGIN_USER = "admin@email.com";
-const LOGIN_PASS = "1234";
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+    // Remove "active" de todos
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
 
-document.getElementById('formCadastro').addEventListener('submit', e => {
-    e.preventDefault();
-    const cliente = new Cliente(
-        document.getElementById('nome').value,
-        document.getElementById('sobrenome').value,
-        document.getElementById('cpf').value,
-        document.getElementById('telefone').value,
-        document.getElementById('endereco').value,
-        document.getElementById('pagamento').value,
-        document.getElementById('email').value,
-        document.getElementById('senha').value
-    );
-
-    let clientes = carregarClientes();
-    clientes.push(cliente);
-    salvarClientes(clientes);
-    alert('Cadastro realizado com sucesso!');
+    // Ativa a tab clicada
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+    });
 });
 
-let clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
-    .map(Cliente.fromJSON);
+// Funções para LocalStorage
+function carregarClientes() {
+return JSON.parse(localStorage.getItem("clientes")) || [];
+}
 
-document.getElementById("btnLoginCliente").addEventListener("click", () => {
+function salvarClientes(clientes) {
+localStorage.setItem("clientes", JSON.stringify(clientes));
+}
+
+// CADASTRO
+document.getElementById("formCadastro").addEventListener("submit", e => {
+e.preventDefault();
+
+const cliente = {
+    nome: document.getElementById("nome").value,
+    sobrenome: document.getElementById("sobrenome").value,
+    cpf: document.getElementById("cpf").value,
+    telefone: document.getElementById("telefone").value,
+    endereco: document.getElementById("endereco").value,
+    pagamento: document.getElementById("pagamento").value,
+    email: document.getElementById("email").value,
+    senha: document.getElementById("senha").value
+};
+
+let clientes = carregarClientes();
+
+// impede cadastro duplicado pelo mesmo email
+if (clientes.some(c => c.email === cliente.email)) {
+    alert("Já existe um cadastro com este e-mail!");
+    return;
+}
+
+clientes.push(cliente);
+salvarClientes(clientes);
+
+alert("Cadastro realizado com sucesso!");
+e.target.reset(); // limpa o formulário
+});
+
+// LOGIN
+document.getElementById("formLogin").addEventListener("submit", e => {
+    e.preventDefault();
+
     const email = document.getElementById("loginEmail").value;
     const senha = document.getElementById("loginSenha").value;
 
-    if (email === LOGIN_USER && senha === LOGIN_PASS) {
-        // sessionStorage.setItem("adminLogado", "true");
-        location.href = "index.html"
+    let clientes = carregarClientes();
+
+    const clienteEncontrado = clientes.find(c => c.email === email && c.senha === senha);
+
+    if (clienteEncontrado) {
+        sessionStorage.setItem("clienteLogado", JSON.stringify(clienteEncontrado));
+        alert("Login realizado com sucesso!");
+        window.location.href = "index.html"; 
     } else {
-        alert("Usuário ou senha inválidos!");
+        alert("E-mail ou senha inválidos!");
     }
-
-    // const cliente = clientes.find(c => c.email === email && c.senha === senha);
-
-    // if (cliente) {
-    //     sessionStorage.setItem("clienteLogado", JSON.stringify(cliente));
-    //     window.location.href = "loja.html"; 
-    // } else {
-    //     alert("E-mail ou senha inválidos!");
-    // }
 });
