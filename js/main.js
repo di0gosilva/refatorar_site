@@ -1,4 +1,3 @@
-// main.js
 import Produto from './Produto.js';
 import Cliente from './Cliente.js';
 
@@ -8,7 +7,7 @@ let produtos = JSON.parse(localStorage.getItem('produtos') || '[]')
 let clientes = JSON.parse(localStorage.getItem('clientes') || '[]')
     .map(Cliente.fromJSON);
 
-function cadastrarProduto() {
+export function cadastrarProduto() {
     const nome = document.getElementById('produto').value;
     const descricao = document.getElementById('descricao').value;
     const codigo = document.getElementById('codigo').value;

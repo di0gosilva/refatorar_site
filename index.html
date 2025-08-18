@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Loja dos Nerds</title>
-    <link rel="stylesheet" href="css/loja.css">
+  <meta charset="UTF-8">
+  <title>Loja dos Nerds</title>
+  <link rel="stylesheet" href="css/loja.css">
+  <script type="module">
+    import { carregarPersonagens } from "./js/marvel.js";
+    window.onload = carregarPersonagens;
+  </script>
 </head>
 <body>
-    <header>
-        <h1>Loja dos Nerds</h1>
-        <nav>
-            <a href="login.html" id="btnLogin">Login / Cadastro</a>
-            <a href="carrinho.html">Carrinho</a>
-            <a href="admin.html">Administração</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Loja dos Nerds</h1>
+    <nav>
+      <a href="login.html" id="btnLogin">Login / Cadastro</a>
+      <a href="carrinho.html">Carrinho</a>
+      <a href="admin.html">Administração</a>
+    </nav>
+  </header>
 
-    <main id="listaProdutos"></main>
+  <main id="listaProdutos"></main>
+  
+  <h1 style="text-align:center;">Catálogo Marvel</h1>
+  <div id="listaPersonagens" class="grid-cards"></div>
 
-    <script type="module" src="js/main.js"></script>
+  
 </body>
 </html>
