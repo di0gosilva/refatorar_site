@@ -55,3 +55,13 @@ button {
     height: auto;
     display: block;
 }
+
+a {
+    text-decoration: none;
+    color: #43a047;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

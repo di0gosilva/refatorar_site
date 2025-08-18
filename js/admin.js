@@ -12,6 +12,7 @@ const btnLogout = document.getElementById("btnLogout");
 const formProduto = document.getElementById("formProduto");
 const tabelaProdutos = document.getElementById("tabelaProdutos");
 const buscaProduto = document.getElementById("buscaProduto");
+const divUser = document.querySelector(".user")
 
 // Variável para saber se está editando
 let editIndex = null;
@@ -28,12 +29,15 @@ function mostrarLogin() {
     secLogin.style.display = "block";
     secPainel.style.display = "none";
     btnLogout.style.display = "none";
+    divUser.style.display = "flex";
 }
 
 // mostrar painel
 function mostrarPainel() {
     secLogin.style.display = "none";
     secPainel.style.display = "block";
+    btnLogout.style.display = "block";
+    divUser.style.display = "none";
     carregarProdutos();
 }
 
