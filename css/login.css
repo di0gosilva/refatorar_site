@@ -1,103 +1,102 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f5f5f5;
-  }
-  
-  #card {
-    background: white;
-    width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Cabeçalho das Tabs */
-  .tabs {
-    display: flex; /* coloca os botões lado a lado */
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .tab-btn {
-    flex: 1;                     /* todos ocupam a mesma largura */
-    display: flex;               /* vira flex container */
-    justify-content: center;     /* centraliza texto horizontal */
-    align-items: center;         /* centraliza texto vertical */
-    padding: 12px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-weight: 600;
-    transition: 0.2s;
-    color: #43a047;
-  }
-  
-  .tab-btn.active {
-    border-bottom: 3px solid #4CAF50;
-    color: #4CAF50;
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f5f5;
+}
 
-  .tab-btn:hover {
-    background: #43a047;
-    color: white;
-  }
-  
-  /* Conteúdo */
-  .tab-content {
-    display: none;
-    padding: 20px;
-    flex-direction: column;
-    gap: 15px; /* espaço entre os elementos */
-  }
-  
-  .tab-content.active {
-    display: flex;
-  }
-  
-  /* Forms */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  form h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Inputs e Select com flex */
-  input, select {
-    display: flex;
-    width: 100%;          /* ocupa toda a largura */
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
-  /* Botões */
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background: #4CAF50;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    width: 100%; /* ocupa toda a largura */
-  }
-  
-  button:hover {
-    background: #43a047;
-  }
-  
+#card {
+  background: white;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho das Tabs */
+.tabs {
+  display: flex; /* coloca os botões lado a lado */
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  flex: 1;                     /* todos ocupam a mesma largura */
+  display: flex;               /* vira flex container */
+  justify-content: center;     /* centraliza texto horizontal */
+  align-items: center;         /* centraliza texto vertical */
+  padding: 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: 600;
+  transition: 0.2s;
+  color: #43a047;
+}
+
+.tab-btn.active {
+  border-bottom: 3px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.tab-btn:hover {
+  background: #43a047;
+  color: white;
+}
+
+/* Conteúdo */
+.tab-content {
+  display: none;
+  padding: 20px;
+  flex-direction: column;
+  gap: 15px; /* espaço entre os elementos */
+}
+
+.tab-content.active {
+  display: flex;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Inputs e Select com flex */
+input, select {
+  display: flex;
+  width: 100%;          /* ocupa toda a largura */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Botões */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%; /* ocupa toda a largura */
+}
+
+button:hover {
+  background: #43a047;
+}
