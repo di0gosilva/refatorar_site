@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Administração</title>
     <link rel="stylesheet" href="css/admin.css">
-    <script src=./js/admin.js></script>
+    
 </head>
 <body>
     <h1>Painel de Administração</h1>
@@ -23,11 +23,17 @@
             <input type="text" id="descProduto" placeholder="Descrição" required>
             <input type="text" id="codigoProduto" placeholder="Código" required>
             <input type="number" id="precoProduto" placeholder="Preço" required>
-            <input type="text" id="linkProduto" placeholder="Link" required>
-            <button type="submit">Cadastrar Produto</button>
+            <input type="text" id="linkProduto" placeholder="Link" required><br><br>
+            <label for="arquivo">Escolha um arquivo:</label>
+            <input type="file" id="arquivo" name="arquivo"><br><br>
+            <button type="submit">Cadastrar Produto</button><br><br>
+            <button id="btnLogout">Sair</button><br><br>
+            
         </form>
 
         <h2>Lista de Produtos</h2>
+        <input type="text" id="buscaProduto" placeholder="Buscar por nome..." />
+
         <table>
             <thead>
                 <tr>
@@ -38,6 +44,7 @@
             </thead>
             <tbody id="tabelaProdutos"></tbody>
         </table>
+
     </section>
 
     <script type="module" src="js/admin.js"></script>
