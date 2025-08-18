@@ -1,32 +1,52 @@
-import Produto from './Produto.js';
-import Cliente from './Cliente.js';
+import express from 'express';
+import mysql from 'mysql2';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
-export function carregarProdutos() {
-    return JSON.parse(localStorage.getItem('produtos') || '[]').map(Produto.fromJSON);
-}
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
-export function salvarProdutos(produtos) {
-    localStorage.setItem('produtos', JSON.stringify(produtos.map(p => p.toJSON())));
-}
+// Conexão com MySQL
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'SUA_SENHA',
+    database: 'seu_banco'
+});
 
-export function carregarClientes() {
-    return JSON.parse(localStorage.getItem('clientes') || '[]').map(Cliente.fromJSON);
-}
+db.connect(err => {
+    if (err) throw err;
+    console.log('✅ Conectado ao MySQL');
+});
 
-export function salvarClientes(clientes) {
-    localStorage.setItem('clientes', JSON.stringify(clientes.map(c => c.toJSON())));
-}
+// Rota para cadastrar cliente
+app.post('/clientes', (req, res) => {
+    const { nome, sobrenome, cpf, telefone, endereco, pagamento, email, senha } = req.body;
+    const sql = 'INSERT INTO clientes (nome, sobrenome, cpf, telefone, endereco, pagamento, email, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(sql, [nome, sobrenome, cpf, telefone, endereco, pagamento, email, senha], (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+        res.json({ message: 'Cadastro realizado com sucesso!' });
+    });
+});
 
-export function setLoginAtual(email) {
-    localStorage.setItem('loginAtual', email);
-}
+// Rota para login
+app.post('/login', (req, res) => {
+    const { email, senha } = req.body;
+    const sql = 'SELECT * FROM clientes WHERE email = ? AND senha = ?';
+    db.query(sql, [email, senha], (err, results) => {
+        if (err) return res.status(500).json({ error: err });
+        if (results.length > 0) {
+            res.json({ message: 'Login válido', usuario: results[0] });
+        } else {
+            res.status(401).json({ message: 'Email ou senha inválidos' });
+        }
+    });
+});
 
-export function getLoginAtual() {
-    return localStorage.getItem('loginAtual');
-}
-
-
-
+app.listen(3000, () => {
+    console.log('🚀 Servidor rodando em http://localhost:3000');
+});
 
 
 
