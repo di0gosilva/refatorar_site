@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel x DC</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <title>Loja dos Nerds</title>
+    <link rel="stylesheet" href="css/loja.css">
+    <script type="module" src="js/main.js" defer></script>
 </head>
-<!--**************************************** -->
-<body onload="montaHTML()">
-<!--**************************************** -->
+<body>
     <header>
-        <div id="hcont">
-            <button onclick="criaLogin()" id="clog">crie seu login</button>
-            <button onclick="abreTelaLogin()" id="log">Login</button>
-            <h1>Loja dos Nerds <br> Vingadores x Liga da Justiça</h1>
-            <a onclick="calculaCesta()" class="car" href="#">Compras<img src="imagens/carrinho.png" alt="Carrinho de compras"></a>
-        </div>
+        <h1>Loja dos Nerds</h1>
+        <nav>
+            <a href="login.html" id="btnLogin">Login / Cadastro</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="admin.html">Administração</a>
+        </nav>
     </header>
 
+    <main id="listaProdutos"></main>
 </body>
 </html>
